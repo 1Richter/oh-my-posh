@@ -40,6 +40,14 @@
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
+          "source": "cli",
+          "mapped_branches": {
+            "feat/*": "🚀 ",
+            "bug/*": "🐛 ",
+            "hotfix/*": "🔥 ",
+            "release/*": "📦 ",
+            "main": "🌟 "
+          },
           "style": "powerline",
           "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
           "type": "git"
@@ -93,10 +101,10 @@
           "powerline_symbol": "\ue0b2",
           "properties": {
             "display_mode": "files",
-            "fetch_virtual_env": false
+            "fetch_virtual_env": true
           },
           "style": "powerline",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} \ue235 ",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} \ue235 ",
           "type": "python"
         },
         {
